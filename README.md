@@ -22,3 +22,6 @@ client does not support authentication protocol requested by server consider upg
 > ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 
 
+### 내일 봐야징
+>https://devkingdom.tistory.com/90
+
