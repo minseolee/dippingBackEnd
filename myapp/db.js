@@ -10,13 +10,14 @@ const connection = mysql.createConnection({
 
 function getAllMemos(callback) {
   connection.query(`select * from memos order by id desc`, (err, rows, fields) => {
-    if (err) throw(err);
-    callback(rows);
+    if (err || rows.length === 0) {
+      return callback([]);
+    }
+
+    return callback(rows);
   });
-  console.log(123);
-  callback();
 }
 
 module.exports = {
-  getAllMemos
+  getAllMemos,
 }
