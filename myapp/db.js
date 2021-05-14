@@ -6,6 +6,7 @@ const connection = mysql.createConnection({
   password: 'asdf1234',
   port: 3306,
   database: 'test_db',
+  dateStrings: 'date'
 })
 
 function getAllMemos(callback) {
@@ -18,6 +19,16 @@ function getAllMemos(callback) {
   });
 }
 
+function insertMemo(content, callback) {
+  connection.query(`insert into memos (content, created_at, updated_at) values ('${content}', now(), now())`,
+    (err, result) => {
+      if (err) throw err;
+      callback();
+    }
+  )
+}
+
 module.exports = {
   getAllMemos,
+  insertMemo
 }
